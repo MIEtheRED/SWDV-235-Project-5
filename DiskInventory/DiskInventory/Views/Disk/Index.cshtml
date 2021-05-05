@@ -1,0 +1,28 @@
+﻿@model List<Disk>
+@{
+    ViewData["Title"] = "Disk Page";
+}
+<h2>Disk Information</h2>
+<a asp-controller="Disk" asp-action="Add">Add a Disk</a>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr><th>DiskId</th><th>Disk Name</th><th>Release Date</th><th>Genre</th><th>Status</th><th>Disk Type</th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (var disk in Model)
+        {
+            <tr>
+                <td>@disk.DiskId</td>
+                <td>@disk.DiskName</td>
+                <td>@disk.ReleaseDate.ToShortDateString()</td>
+                <td>@disk.GenreId</td>
+                <td>@disk.StatusId</td>
+                <td>@disk.DiskTypeId</td>
+                <td>
+                    <a asp-controller="Disk" asp-action="Edit" asp-route-id="@disk.DiskId">Edit</a>
+                    <a asp-controller="Disk" asp-action="Delete" asp-route-id="@disk.DiskId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,27 @@
+﻿@model List<Borrower>
+@{
+    ViewData["Title"] = "Borrower Page";
+}
+<h2>Borrower Information</h2>
+
+<a asp-controller="Borrower" asp-action="Add">Add New Borrower</a>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr><th>Borrower Id</th><th>First Name</th><th>Last Name</th><th>Phone</th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (var borrower in Model)
+        {
+            <tr>
+                <td>@borrower.BorrowerId</td>
+                <td>@borrower.Fname</td>
+                <td>@borrower.Lname</td>
+                <td>@borrower.PhoneNum</td>
+                <td>
+                    <a asp-controller="Borrower" asp-action="Edit" asp-route-id="@borrower.BorrowerId">Edit</a>
+                    <a asp-controller="Borrower" asp-action="Delete" asp-route-id="@borrower.BorrowerId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,27 @@
+﻿@model List<Artist>
+@{
+    ViewData["Title"] = "Artist Page";
+}
+
+<h2>Artist List</h2>
+<a asp-controller="Artist" asp-action="Add">Add an Artist</a>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr><th>Artist Id</th><th>First Name</th><th>Last Name</th><th>Artist Type</th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (var artist in Model)
+        {
+            <tr>
+                <td>@artist.ArtistId</td>
+                <td>@artist.Fname</td>
+                <td>@artist.Lname</td>
+                <td>@artist.ArtistTypeId</td>
+                <td>
+                    <a asp-controller="Artist" asp-action="Edit" asp-route-id="@artist.ArtistId">Edit</a>
+                    <a asp-controller="Artist" asp-action="Delete" asp-route-id="@artist.ArtistId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,38 @@
+﻿@model List<DiskHasBorrower>
+@{
+    ViewData["Title"] = "Checkout / Return Page";
+}
+<h2>@ViewData["Title"]</h2>
+
+<a asp-controller="DiskHasBorrower" asp-action="Add">Add a Checkout</a>
+
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Disk Name</th>
+            <th>Borrower Last Name</th>
+            <th>Borrower First Name</th>
+            <th>Borrow Date</th>
+            <th>Due Date</th>
+            <th>Returned Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var diskHasBorrower in Model)
+        {
+        <tr>
+            <td>@diskHasBorrower.Disk.DiskName</td>
+            <td>@diskHasBorrower.Borrower.Lname</td>
+            <td>@diskHasBorrower.Borrower.Fname</td>
+            <td>@diskHasBorrower.BorrowedDate.ToShortDateString()</td>
+            <td>@diskHasBorrower.DueDate.ToShortDateString()</td>
+            <td>@diskHasBorrower.ReturnedDate?.ToShortDateString()</td>
+            <td>
+                <a asp-controller="DiskHasBorrower" asp-action="Edit" asp-route-id="@diskHasBorrower.DiskHasBorrowerId">Edit</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

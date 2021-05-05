@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Brandon's Disk Inventory</h1>
+    <p>Select a Page to review:</p>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Artist" asp-action="Index">Manage Artists</a>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Borrower" asp-action="Index">Manage Borrowers</a>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Disk" asp-action="Index">Manage Disks</a>
+    <a class="nav-link text-dark" asp-area="" asp-controller="DiskHasBorrower" asp-action="Index">Checkout / Return</a>
+
+</div>
